@@ -7,15 +7,16 @@ const PrivateRoute = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
 
   useEffect(() => {
-    const checkAuth = async () => {
+    // Verificación inicial
+    const checkInitialAuth = async () => {
       try {
-        await axios.get(AUTH_CHECK_URL, { withCredentials: true });
+        await axios.get(AUTH_CHECK_URL);
         setIsAuthenticated(true);
       } catch (error) {
         setIsAuthenticated(false);
       }
     };
-    checkAuth();
+    checkInitialAuth();
   }, []);
 
   if (isAuthenticated === null) {

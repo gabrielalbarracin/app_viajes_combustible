@@ -123,9 +123,7 @@ const Login = () => {
       </div>
 
       {/* Footer */}
-      {/* <div className="relative z-10 mt-8 text-center text-white text-sm">
-        <p></p>
-      </div> */}
+      
     </div>
   );
 };

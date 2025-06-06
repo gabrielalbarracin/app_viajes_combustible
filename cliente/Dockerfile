@@ -1,5 +1,5 @@
-# Usar node 18 como base
-FROM node:18-alpine
+# Etapa de construcción
+FROM node:18-alpine as build
 
 # Establecer directorio de trabajo
 WORKDIR /app
@@ -16,11 +16,17 @@ COPY . .
 # Construir la aplicación
 RUN npm run build
 
-# Instalar serve para servir la aplicación
+# Etapa de producción
+FROM node:18-alpine
+
+# Instalar serve
 RUN npm install -g serve
+
+# Copiar los archivos construidos
+COPY --from=build /app/dist /app
 
 # Exponer puerto 3000
 EXPOSE 3000
 
 # Comando para iniciar la aplicación
-CMD ["serve", "-s", "dist", "-l", "3000"] 
+CMD ["serve", "-s", "/app", "-l", "3000"] 

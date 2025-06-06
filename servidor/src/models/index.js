@@ -20,7 +20,6 @@ const connectDB = async () => {
 // Exportar modelos
 export { default as Usuario } from './Usuario.js';
 export { default as Estado } from './Estado.js';
-export { default as Combustible } from './Combustible.js';
 export { default as Viaje } from './Viaje.js';
 
 export { connectDB }; 

@@ -25,10 +25,8 @@ const usuarioSchema = new mongoose.Schema({
 // Método para comparar contraseñas
 usuarioSchema.methods.comparePassword = async function(candidatePassword) {
   try {
-    //console.log('Comparando contraseñas para:', this.email);
-    //console.log('Contraseña candidata:', candidatePassword);
+    
     const isMatch = await bcrypt.compare(candidatePassword, this.password);
-    //console.log('¿Contraseñas coinciden?:', isMatch);
     return isMatch;
   } catch (error) {
     console.error('Error al comparar contraseñas:', error);

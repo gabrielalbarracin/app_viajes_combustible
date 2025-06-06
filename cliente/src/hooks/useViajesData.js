@@ -19,7 +19,7 @@ export const useViajesData = () => {
   const fetchEstados = useCallback(async () => {
     try {
       const response = await viajesApi.getEstados();
-      console.log('Respuesta completa de estados:', response);
+      //console.log('Respuesta completa de estados:', response);
       
       // Si la respuesta es directamente el array de estados
       if (Array.isArray(response)) {
@@ -30,7 +30,7 @@ export const useViajesData = () => {
       
       // Si la respuesta tiene estructura {success, data}
       if (response.success && Array.isArray(response.data)) {
-        console.log('Estados dentro de response.data:', response.data);
+        //console.log('Estados dentro de response.data:', response.data);
         setEstados(response.data);
         return;
       }

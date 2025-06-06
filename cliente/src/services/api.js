@@ -57,11 +57,6 @@ export const viajesApi = {
     return response;
   },
 
-  // Endpoints para obtener datos relacionados
-  getCombustibles: async () => {
-    const response = await axios.get('/combustibles');
-    return response;
-  },
 
   // Estados
   getEstados: async () => {

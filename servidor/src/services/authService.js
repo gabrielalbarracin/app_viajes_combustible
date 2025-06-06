@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 import { Usuario } from '../models/index.js';
 
 class AuthService {
@@ -12,7 +12,6 @@ class AuthService {
   };
 
   static login = async (email, password) => {
-    console.log('Intentando login con:', { email });
     
     // Buscar usuario
     const usuario = await Usuario.findOne({ email });
@@ -21,7 +20,6 @@ class AuthService {
       throw new Error('Credenciales inválidas');
     }
 
-    console.log('Usuario encontrado:', usuario.email);
 
     // Verificar contraseña
     const isMatch = await usuario.comparePassword(password);
@@ -30,7 +28,7 @@ class AuthService {
       throw new Error('Credenciales inválidas');
     }
 
-    console.log('Login exitoso para:', email);
+    //console.log('Login exitoso para:', email);
 
     // Generar token
     const token = this.generarToken(usuario._id);
@@ -45,7 +43,7 @@ class AuthService {
     };
   };
 
-  static register = async (userData) => {
+  /*static register = async (userData) => {
     const { email } = userData;
 
     // Verificar si el usuario ya existe
@@ -69,7 +67,7 @@ class AuthService {
         email: user.email
       }
     };
-  };
+  };*/
 }
 
 export default AuthService; 
